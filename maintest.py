@@ -1,6 +1,6 @@
-import JsonHelper as js
+import JsonHelper as JH
 
-savemanager = js.JsonManager()
+savemanager = JH.JsonManager()
 
 savemanager.open("data.json")
 savemanager.Value("val","wow")

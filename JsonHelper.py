@@ -11,6 +11,9 @@ class JsonManager():
             self.dict = json.loads(open(file_name,"r").read())
         except: open(file_name,"w").close()
 
+    def getValue(self,key:str):
+        return self.dict[key]
+
     def Value(self,key:str,value:any):
         if self.file_name == "":print("JsonSaving Error: no file oppened, cannot modify/add value (Val Function)");return
         file = open(self.file_name,"w")
