@@ -7,7 +7,7 @@ import JsonHelper as JH
 save = JH.JsonManager()
 
 # Open or Create a .json and load it's contents into the JsonManager
-save.open("example-data.json")
+save.open("example#1-data.json")
 
 # Change the value of a key
 save.Value("val","wow")
@@ -32,7 +32,7 @@ print("Value at key 'val' for save#1: "+str(save.getValue("val")))
 save.reset()
 
 # Because we reseted the JsonManager, we must re-open a .json file to continue using functions like Value, Dict, List, getValue, ect...
-save.open("example-data-2.json")
+save.open("example#1-data2.json")
 
 # Change the value of a key
 save.Value("val",0)
