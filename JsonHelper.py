@@ -7,12 +7,11 @@ class JsonManager():
 
     def open(self,file_name:str):
         self.file_name = file_name
-        try:
-            self.dict = json.loads(open(file_name,"r").read())
+        try:self.dict = json.loads(open(file_name,"r").read())
         except: open(file_name,"w").close()
 
     def getValue(self,key:str):
-        return self.dict[key]
+        if self.file_name != "":return self.dict[key]
 
     def Value(self,key:str,value:any):
         if self.file_name == "":print("JsonSaving Error: no file oppened, cannot modify/add value (Val Function)");return
@@ -22,7 +21,7 @@ class JsonManager():
             if isinstance(self.dict[key],dict):print("Please use function dictValue to modify/add a value to a Dictionary");return
         except:pass
         self.dict[key] = value
-        file.write(json.dumps(self.dict))
+        file.write(json.dumps(self.dict, indent=4))
         file.close()
 
     def ListValue(self,listname:str,index:int,value:any):
@@ -33,27 +32,27 @@ class JsonManager():
         except:pass
         try:
             self.dict[listname][index] = value
-            file.write(json.dumps(self.dict))
+            file.write(json.dumps(self.dict, indent=4))
             file.close()
         except:
             self.dict[listname] = []
             try:self.dict[listname][index] = value
             except:self.dict[listname].append(value)
-            file.write(json.dumps(self.dict))
+            file.write(json.dumps(self.dict, indent=4))
             file.close()
         
     def List(self,listname:str,list:list):
         if self.file_name == "":print("JsonSaving Error: no file oppened, cannot modify/add value (Val Function)");return
         file = open(self.file_name,"w")
         self.dict[listname] = list
-        file.write(json.dumps(self.dict))
+        file.write(json.dumps(self.dict, indent=4))
         file.close()
 
     def Dict(self,dictname:str,dict:dict):
         if self.file_name == "":print("JsonSaving Error: no file oppened, cannot modify/add value (Val Function)");return
         file = open(self.file_name,"w")
         self.dict[dictname] = dict
-        file.write(json.dumps(self.dict))
+        file.write(json.dumps(self.dict, indent=4))
         file.close()
         
     def DictValue(self,dictname:str,key:any,value:any):
@@ -64,7 +63,7 @@ class JsonManager():
         except:pass
         try:
             self.dict[dictname][key] = value
-            file.write(json.dumps(self.dict))
+            file.write(json.dumps(self.dict, indent=4))
             file.close()
         except:
             self.dict[dictname] = {}

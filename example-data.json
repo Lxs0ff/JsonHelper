@@ -1,1 +1,10 @@
-{"val": "wow", "dict": {"plane": true}, "list": ["It works", true]}
+{
+    "val": "wow",
+    "dict": {
+        "plane": true
+    },
+    "list": [
+        "It works",
+        true
+    ]
+}
